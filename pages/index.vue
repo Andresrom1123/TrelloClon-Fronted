@@ -9,7 +9,7 @@
             vacaciones en familia, Trello ayuda a tu equipo a permanecer
             organizado.
           </p>
-          <button type="button" class="btn btn-secondary -font-size-1">
+          <button type="button" class="btn btn-secondary -font-size-2">
             Empiece a <i class="ml-2 fas fa-long-arrow-alt-right"></i>
           </button>
           <div></div>
@@ -122,14 +122,14 @@
     <!--  -->
     <div class="-bg align-items-center d-flex justify-content-center">
       <div>
-        <h3 class="font-weight-bold text-center">
+        <h2 class="font-weight-bold text-center -text-white">
           Póngase a planificar ya mismo
-        </h3>
-        <p class="text-center -font-size-1">
+        </h2>
+        <!-- <p class="text-center -font-size-1">
           Regístrese y pase a ser una de los millones de personas de <br />
           personas de todo el mundo que utilizan Trello <br />
           para hacer más y mejor las cosas.
-        </p>
+        </p> -->
         <div class="d-flex justify-content-center">
           <button type="button" class="btn btn-success -font-size-1">
             Empiece ya. Es gratis!
