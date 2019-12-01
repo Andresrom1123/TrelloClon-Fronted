@@ -10,7 +10,7 @@
     <div class="d-flex justify-content-center">
       <div class="shadow p-5 -form">
         <div class="d-flex justify-content-center mb-3 font-weight-bold">
-          <template>Iniciar sesion con trello</template>
+          <template>Registrarse en Trello</template>
         </div>
         <ValidationObserver ref="observer" v-slot="{ passes }">
           <form @submit.prevent="passes(onSubmit)">
@@ -32,41 +32,25 @@
                 </small>
               </div>
             </ValidationProvider>
-            <ValidationProvider
-              v-slot="{ errors }"
-              rules="required"
-              name="password"
-            >
-              <div class="form-group">
-                <input
-                  id="exampleInputPassword1"
-                  type="password"
-                  class="form-control"
-                  placeholder="Introduzca la contraseña"
-                />
-                <small class="from-text text-danger">
-                  {{ errors[0] }}
-                </small>
-              </div>
-            </ValidationProvider>
+            <div class="mb-3">
+              <small class="text-muted">
+                Al registrarse, confirma que ha leído y aceptado nuestras
+                <span class="text-primary">Condiciones del Servicio</span> y
+                nuestra
+                <span class="text-primary">Política de Privacidad</span>.
+              </small>
+            </div>
             <button type="submit" class="btn btn-block btn-success">
-              Iniciar sesion
+              Continuar
             </button>
           </form>
         </ValidationObserver>
         <div class="border-bottom my-4"></div>
-        <ul class="text-center">
-          <li class="-list-style-none mb-2">
-            <a href="" class="text-decoration-none -text-blue font-weight-bold">
-              No puedes iniciar sesion?
-            </a>
-          </li>
-          <li class="-list-style-none">
-            <a href="" class="text-decoration-none -text-blue font-weight-bold">
-              Registrese para una cuenta nueva
-            </a>
-          </li>
-        </ul>
+        <div class="text-center">
+          <a href="#" class="-text-blue ">
+            Ya tienes cuenta? Inicie sesion
+          </a>
+        </div>
       </div>
     </div>
   </div>
