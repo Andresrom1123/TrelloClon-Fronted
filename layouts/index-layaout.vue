@@ -1,16 +1,20 @@
 <template>
   <div>
-    <nav class="navbar navbar-light">
+    <nav class="d-fixed navbar navbar-light">
       <img src="/trello-logo.svg" width="200" class="pr-5" />
       <form class="form-inline">
-        <h6 class="pr-3 .bg-white">Iniciar seccion</h6>
-        <button
-          class="btn btn-outline-success my-2 my-sm-0"
-          type="submit"
-          id="fondo"
-        >
-          Registrate
-        </button>
+        <a href="/login" class="pr-3 text-decoration-none text-white">
+          Iniciar sesion
+        </a>
+        <a href="/signup">
+          <button
+            class="btn btn-outline-success my-2 my-sm-0"
+            type="button"
+            id="fondo"
+          >
+            Registrate
+          </button>
+        </a>
       </form>
     </nav>
     <nuxt />

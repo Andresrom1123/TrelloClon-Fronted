@@ -1,5 +1,5 @@
 <template>
-  <div class="-font">
+  <div>
     <div class="background pt-4">
       <div class="container mt-4">
         <div class="row">
@@ -19,20 +19,15 @@
         </div>
         <div class="row mt-3">
           <div class="col-4">
-            <input
-              type="text"
-              class="correo"
-              placeholder="Correo electrónico"
-            />
-          </div>
-          <div class="col-4">
-            <button
-              type="button"
-              class="btn btn-wrap btn-success btn-lg px-4"
-              id="register"
-            >
-              Registrese Gratis
-            </button>
+            <a href="/signup">
+              <button
+                type="button"
+                class="btn btn-wrap btn-success btn-lg px-4"
+                id="register"
+              >
+                Registrese Gratis
+              </button>
+            </a>
           </div>
         </div>
       </div>
@@ -40,7 +35,7 @@
     <!--Terminacion del Baner -->
     <div class="container my-3">
       <!--  -->
-      <div class="row d-flex align-items-center">
+      <div class="row my-5 d-flex align-items-center">
         <div class="col">
           <h3 class="font-weight-bold">Trabaje con cualquier equipo</h3>
           <p class="sub-text">
@@ -50,12 +45,20 @@
           </p>
         </div>
         <div class="col">
-          <img class="rounded" src="/tabla.png" width="500" height="320" />
+          <!-- <img class="rounded" src="/tabla.png" width="500" height="320" /> -->
+          <img
+            class=""
+            src="https://files.slack.com/files-pri/TKU9PQ6QY-FQTLWBG2E/image.png"
+          />
         </div>
       </div>
-      <div class="row pt-3 d-flex align-items-center">
+      <div class="row my-5 pt-3 d-flex align-items-center">
         <div class="col">
-          <img class="rounded" src="/tel.png" width="400" height="259" />
+          <!-- <img class="rounded" src="/tel.png" width="400" height="259" /> -->
+          <img
+            class="rounded"
+            src="https://files.slack.com/files-pri/TKU9PQ6QY-FR6ENN7S9/image.png"
+          />
         </div>
         <div class="col">
           <h3 class="font-weight-bold">Información de un vistazo</h3>
@@ -66,7 +69,8 @@
           </p>
         </div>
       </div>
-      <div class="pt-4">
+      <!--  -->
+      <div class="pt-4 my-5">
         <h3 class="font-weight-bold text-center">Trello a su manera</h3>
         <div class="d-flex justify-content-center">
           <p class="-font-size-1 text-center col-6">
@@ -101,6 +105,7 @@
               </button>
             </div>
           </div>
+          <!--  -->
           <div class="col-4">
             <div class="text-center">
               <img
@@ -124,6 +129,7 @@
               </button>
             </div>
           </div>
+          <!--  -->
           <div class="col-4">
             <div class="text-center">
               <img
@@ -153,59 +159,81 @@
               />
             </div>
           </div>
+          <!--  -->
         </div>
       </div>
-      <div class="container pt-4">
-                <div class="container pt-4" id="sub-background">
-                  <div class="row">
-                    <div class="col">
-                      <p class="sub-title">
-                        Trabaje de manera más inteligente con Trello
-                      </p>
-                      <p class="text">
-                        Empresas de todas las índoles y tamaños utilizan Trello.
-                      </p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-3 pr-4 pt-3">
-                      <img src="/logo-ki.svg" alt="" />
-                    </div>
-                    <div class="col-3 pl-3 pt-3">
-                      <img src="/logo-national.svg" alt="" />
-                    </div>
-                    <div class="col-3 pl-3 pt-3">
-                      <img src="/logo-google.svg" alt="" />
-                    </div>
-                    <div class="col-3 pl-3 pt-3">
-                      <img src="/logo-fender.svg" alt="" />
-                    </div>
-                  </div>
-                  <div class="row">
-                    <button
-                      type="button"
-                      class="btn btn-light p-2 pt-2"
-                      id="buttn"
-                    >
-                      Descubrir como
-                    </button>
-                  </div>
-                </div>
-              </div>
+      <!--  -->
+      <div
+        class="rounded d-flex justify-content-center align-items-center"
+        id="sub-background"
+      >
+        <div>
+          <div>
+            <h3 class="sub-title">
+              Trabaje de manera más inteligente con Trello
+            </h3>
+            <p class="text-center -text-white -font-size-1">
+              Empresas de todas las índoles y tamaños utilizan Trello.
+            </p>
+          </div>
+          <div class="row d-flex align-items-center my-5">
+            <div class="col-3">
+              <!-- <img src="/logo-ki.svg" alt="" /> -->
+              <img
+                src="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/83b3c2b3542d1ce997306dd2c76a898d/logo-kickstarter.svg"
+                alt=""
+                width="100%"
+              />
+            </div>
+            <div class="col-3">
+              <!-- <img src="/logo-national.svg" alt="" /> -->
+              <img
+                src="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/99b35981e7c571708532ba39f0764aeb/logo-national-geographic.svg"
+                alt=""
+                width="100%"
+              />
+            </div>
+            <div class="col-3">
+              <!-- <img src="/logo-google.svg" alt="" /> -->
+              <img
+                src="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/4838c7256b43105d3abe0631ac1bb72c/logo-google.svg"
+                alt=""
+                width="100%"
+              />
+            </div>
+            <div class="col-3">
+              <!-- <img src="/logo-fender.svg" alt="" /> -->
+              <img
+                src="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/759e9aaacc706fd1f2d5f81b1a76b768/logo-fender.svg"
+                alt=""
+                width="100%"
+              />
+            </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-light px-4 py-2" id="buttn">
+              Descubrir como <i class="fas fa-long-arrow-alt-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
     <!--  -->
     <div class="-bg align-items-center d-flex justify-content-center">
-      <div>
+      <div class="mb-5 pb-5">
         <h2 class="font-weight-bold text-center -text-white">
           Póngase a planificar ya mismo
         </h2>
         <div class="d-flex justify-content-center">
-          <button type="button" class="btn btn-success -font-size-1">
-            Empiece ya. Es gratis!
-          </button>
+          <a href="/signup">
+            <button type="button" class="btn btn-success -font-size-1">
+              Empiece ya. ¡Es gratis!
+            </button>
+          </a>
         </div>
       </div>
     </div>
+    <!--  -->
   </div>
 </template>
 <script>
@@ -249,6 +277,7 @@ export default {
 }
 #sub-background {
   background: linear-gradient(180deg, #42548e 0%, #6b668c 100%);
+  height: 370px;
 }
 .sub-title {
   font-size: 35px;

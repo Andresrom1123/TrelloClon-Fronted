@@ -57,12 +57,18 @@
         <div class="border-bottom my-4"></div>
         <ul class="text-center">
           <li class="-list-style-none mb-2">
-            <a href="" class="text-decoration-none -text-blue font-weight-bold">
+            <a
+              href="#"
+              class="text-decoration-none -text-blue font-weight-bold"
+            >
               No puedes iniciar sesion?
             </a>
           </li>
           <li class="-list-style-none">
-            <a href="" class="text-decoration-none -text-blue font-weight-bold">
+            <a
+              href="/signup"
+              class="text-decoration-none -text-blue font-weight-bold"
+            >
               Registrese para una cuenta nueva
             </a>
           </li>

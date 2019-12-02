@@ -32,6 +32,40 @@
                 </small>
               </div>
             </ValidationProvider>
+            <ValidationProvider
+              v-slot="{ errors }"
+              rules="required"
+              name="text"
+            >
+              <div class="form-group">
+                <input
+                  id="exampleInputEmail1"
+                  type="text"
+                  class="form-control"
+                  placeholder="Introducir nombre completo"
+                />
+                <small class="from-text text-danger">
+                  {{ errors[0] }}
+                </small>
+              </div>
+            </ValidationProvider>
+            <ValidationProvider
+              v-slot="{ errors }"
+              rules="required"
+              name="password"
+            >
+              <div class="form-group">
+                <input
+                  id="exampleInputEmail1"
+                  type="password"
+                  class="form-control"
+                  placeholder="Crear contraseña"
+                />
+                <small class="from-text text-danger">
+                  {{ errors[0] }}
+                </small>
+              </div>
+            </ValidationProvider>
             <div class="mb-3">
               <small class="text-muted">
                 Al registrarse, confirma que ha leído y aceptado nuestras
@@ -41,13 +75,13 @@
               </small>
             </div>
             <button type="submit" class="btn btn-block btn-success">
-              Continuar
+              Registrarse
             </button>
           </form>
         </ValidationObserver>
         <div class="border-bottom my-4"></div>
         <div class="text-center">
-          <a href="#" class="-text-blue ">
+          <a href="/login" class="-text-blue ">
             Ya tienes cuenta? Inicie sesion
           </a>
         </div>
