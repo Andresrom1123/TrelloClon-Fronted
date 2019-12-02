@@ -196,9 +196,9 @@
     <!--  -->
     <div class="-bg align-items-center d-flex justify-content-center">
       <div>
-        <h3 class="font-weight-bold text-center">
+        <h2 class="font-weight-bold text-center -text-white">
           Póngase a planificar ya mismo
-        </h3>
+        </h2>
         <div class="d-flex justify-content-center">
           <button type="button" class="btn btn-success -font-size-1">
             Empiece ya. Es gratis!
