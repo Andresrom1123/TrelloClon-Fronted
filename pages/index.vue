@@ -8,7 +8,7 @@
               Trello le permite trabajar de forma más colaborativa y ser más
               productivo.
             </p>
-            <p class="text">
+            <p class="text-left text">
               Las tarjetas, listas y tableros de Trello le permiten organizar y
               priorizar sus proyectos de forma divertida, flexible y provechosa.
             </p>
