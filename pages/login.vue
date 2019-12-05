@@ -1,11 +1,13 @@
 <template>
-  <div class="-banner -font">
-    <div class="d-flex justify-content-center pt-5 pb-2">
-      <img
-        src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/trello-header-logos/76ceb1faa939ede03abacb6efacdde16/trello-logo-blue.svg"
-        alt=""
-        class="-img"
-      />
+  <div class="-banner">
+    <div class="d-flex justify-content-center py-1">
+      <a href="/">
+        <img
+          src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/trello-header-logos/76ceb1faa939ede03abacb6efacdde16/trello-logo-blue.svg"
+          alt=""
+          class="-img"
+        />
+      </a>
     </div>
     <div class="d-flex justify-content-center">
       <div class="shadow p-5 -form">

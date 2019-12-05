@@ -242,9 +242,6 @@ export default {
 }
 </script>
 <style scoped>
-* {
-  font-family: 'Open Sans', sans-serif;
-}
 .size1 {
   font-size: 48px;
   line-height: 58px;
