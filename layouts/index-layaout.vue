@@ -8,9 +8,9 @@
         </a>
         <a href="/signup">
           <button
-            class="btn btn-outline-success my-2 my-sm-0"
-            type="button"
             id="fondo"
+            type="button"
+            class="btn btn-outline-success my-2 my-sm-0"
           >
             Registrate
           </button>

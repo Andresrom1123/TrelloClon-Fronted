@@ -23,7 +23,7 @@
             >
               <div class="form-group">
                 <input
-                  id="exampleInputEmail1"
+                  v-model="form.username"
                   type="text"
                   class="form-control"
                   placeholder="Introduzca su nombre de usuario"
@@ -36,11 +36,11 @@
             <ValidationProvider
               v-slot="{ errors }"
               rules="required"
-              name="firs_name"
+              name="first_name"
             >
               <div class="form-group">
                 <input
-                  id="exampleInputEmail1"
+                  v-model="form.first_name"
                   type="text"
                   class="form-control"
                   placeholder="Introduzca su nombre"
@@ -57,7 +57,7 @@
             >
               <div class="form-group">
                 <input
-                  id="exampleInputEmail1"
+                  v-model="form.last_name"
                   type="text"
                   class="form-control"
                   placeholder="Introduzca sus apellidos"
@@ -74,7 +74,7 @@
             >
               <div class="form-group">
                 <input
-                  id="exampleInputEmail1"
+                  v-model="form.email"
                   type="email"
                   class="form-control"
                   aria-describedby="emailHelp"
@@ -92,7 +92,7 @@
             >
               <div class="form-group">
                 <input
-                  id="exampleInputEmail1"
+                  v-model="form.password"
                   type="password"
                   class="form-control"
                   placeholder="Crear contraseña"
@@ -125,3 +125,33 @@
     </div>
   </div>
 </template>
+<script>
+import axios from 'axios'
+export default {
+  data() {
+    return {
+      form: {
+        username: '',
+        first_name: '',
+        last_name: '',
+        email: '',
+        password: ''
+      },
+      urlApi: 'http://127.0.0.1:8000/api/v1/users/'
+    }
+  },
+  methods: {
+    onSubmit() {
+      axios
+        .post(this.urlApi, this.form)
+        .then((response) => {
+          console.log(response.data)
+          alert('Se creo el usuario')
+        })
+        .catch(() => {
+          alert('Tuvimos un error')
+        })
+    }
+  }
+}
+</script>

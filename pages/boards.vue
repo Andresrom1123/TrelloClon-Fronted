@@ -5,6 +5,7 @@
 </template>
 <script>
 export default {
-  layout: 'board-layout'
+  layout: 'board-layout',
+  middleware: 'authenticated'
 }
 </script>

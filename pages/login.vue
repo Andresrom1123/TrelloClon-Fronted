@@ -18,16 +18,15 @@
           <form @submit.prevent="passes(onSubmit)">
             <ValidationProvider
               v-slot="{ errors }"
-              rules="required|email"
-              name="email"
+              rules="required"
+              name="username"
             >
               <div class="form-group">
                 <input
-                  id="exampleInputEmail1"
-                  type="email"
+                  v-model="form.username"
+                  type="text"
                   class="form-control"
-                  aria-describedby="emailHelp"
-                  placeholder="Introduzca el correo electronico"
+                  placeholder="Introduzca su nombre de usario"
                 />
                 <small class="from-text text-danger">
                   {{ errors[0] }}
@@ -41,7 +40,7 @@
             >
               <div class="form-group">
                 <input
-                  id="exampleInputPassword1"
+                  v-model="form.password"
                   type="password"
                   class="form-control"
                   placeholder="Introduzca la contraseña"
@@ -79,3 +78,45 @@
     </div>
   </div>
 </template>
+<script>
+import axios from 'axios'
+import { mapMutations } from 'vuex'
+export default {
+  data() {
+    return {
+      form: {
+        username: '',
+        password: ''
+      },
+      urlApi: 'http://127.0.0.1:8000/api/token/'
+    }
+  },
+  methods: {
+    ...mapMutations(['login']),
+    onSubmit() {
+      axios
+        .post(this.urlApi, this.form)
+        .then((response) => {
+          // Dirigimos la respuesta de la api
+          const user = response.data
+          // Mandamos a llamar el método que mapea la mutación login
+          this.login(user)
+          // Redireccionamos al boards
+          this.$router.push('/boards')
+        })
+        .catch((error) => {
+          console.log(error)
+          // Si el usuario no existe en la base de datos
+          if (error.response.status === 401) {
+            alert('no existe el usario en la base de datos')
+          } else if (error.response.status === 422) {
+            // Si esta enviando mal la informacion
+            alert('no estoy enviando bien la informacion')
+          } else {
+            alert('Tuvimos un error desconcido')
+          }
+        })
+    }
+  }
+}
+</script>
