@@ -8,3 +8,8 @@ export const mutations = {
     state.authenticated = true
   }
 }
+export const getters = {
+  logged(state) {
+    return state.authenticated
+  }
+}

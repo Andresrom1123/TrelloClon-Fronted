@@ -11,6 +11,16 @@
     </div>
     <div class="d-flex justify-content-center">
       <div class="shadow p-5 -form">
+        <b-alert
+          @dismissed="errorBolean = false"
+          :show="errorBolean"
+          dismissible
+          fade
+        >
+          <small class="text-danger">
+            {{ error }}
+          </small>
+        </b-alert>
         <div class="d-flex justify-content-center mb-3 font-weight-bold">
           <template>Registrarse en Trello</template>
         </div>
@@ -137,7 +147,10 @@ export default {
         email: '',
         password: ''
       },
-      urlApi: 'http://127.0.0.1:8000/api/v1/users/'
+      urlApi: 'http://127.0.0.1:8000/api/v1/users/',
+      error: '',
+      errorBolean: false,
+      errorUser: 'A user with that username already exists.'
     }
   },
   methods: {
@@ -145,11 +158,22 @@ export default {
       axios
         .post(this.urlApi, this.form)
         .then((response) => {
-          console.log(response.data)
-          alert('Se creo el usuario')
+          alert('Se creo el usuaio')
+          //
+          this.$router.push('signup/verify-email')
+          // console.log(response.data)
+          //
+          localStorage.setItem('email', this.form.email)
         })
-        .catch(() => {
-          alert('Tuvimos un error')
+        .catch((error) => {
+          if (error.response.data.username[0] === this.errorUser) {
+            this.errorBolean = true
+            this.error = 'El nombre de usuario ya existe'
+          } else {
+            this.errorBolean = true
+            this.error =
+              'El nombre de usuario no es valido. Este valor no debe de contener espacios, numeros, y @/./+/-/_ caractares'
+          }
         })
     }
   }
