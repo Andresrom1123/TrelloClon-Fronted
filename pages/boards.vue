@@ -1,6 +1,10 @@
 <template>
   <div>
-    este es mi tablero
+    <div class="container my-5">
+      <p>
+        Tableros
+      </p>
+    </div>
   </div>
 </template>
 <script>

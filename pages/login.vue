@@ -1,5 +1,6 @@
 <template>
   <div class="-banner">
+    {{ logged }}
     <div class="d-flex justify-content-center py-1">
       <a href="/">
         <img
@@ -11,6 +12,18 @@
     </div>
     <div class="d-flex justify-content-center">
       <div class="shadow p-5 -form">
+        <div>
+          <b-alert
+            @dismissed="error401 = false"
+            :show="error401"
+            dismissible
+            fade
+          >
+            <small class="text-danger">
+              Por favor ingresa los datos correctamente
+            </small>
+          </b-alert>
+        </div>
         <div class="d-flex justify-content-center mb-3 font-weight-bold">
           <template>Iniciar sesion con trello</template>
         </div>
@@ -80,7 +93,7 @@
 </template>
 <script>
 import axios from 'axios'
-import { mapMutations } from 'vuex'
+import { mapMutations, mapGetters } from 'vuex'
 export default {
   data() {
     return {
@@ -88,11 +101,19 @@ export default {
         username: '',
         password: ''
       },
-      urlApi: 'http://127.0.0.1:8000/api/token/'
+      urlApi: 'http://127.0.0.1:8000/api/token/',
+      error401: false
     }
   },
+  computed: {
+    ...mapGetters({
+      logged: 'auth/logged'
+    })
+  },
   methods: {
-    ...mapMutations(['login']),
+    ...mapMutations({
+      login: 'auth/login'
+    }),
     onSubmit() {
       axios
         .post(this.urlApi, this.form)
@@ -103,12 +124,13 @@ export default {
           this.login(user)
           // Redireccionamos al boards
           this.$router.push('/boards')
+          //
         })
         .catch((error) => {
           console.log(error)
           // Si el usuario no existe en la base de datos
           if (error.response.status === 401) {
-            alert('no existe el usario en la base de datos')
+            this.error401 = true
           } else if (error.response.status === 422) {
             // Si esta enviando mal la informacion
             alert('no estoy enviando bien la informacion')
