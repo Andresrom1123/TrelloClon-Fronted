@@ -238,8 +238,8 @@
 </template>
 <script>
 export default {
-  layout: 'index-layaout',
-  middleware: 'authenticated-index'
+  layout: 'home-layout',
+  middleware: 'authenticated-home'
 }
 </script>
 <style scoped>
