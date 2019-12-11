@@ -21,9 +21,9 @@
           <div class="col-4">
             <a href="/signup">
               <button
+                id="register"
                 type="button"
                 class="btn btn-wrap btn-success btn-lg px-4"
-                id="register"
               >
                 Registrese Gratis
               </button>
@@ -164,8 +164,8 @@
       </div>
       <!--  -->
       <div
-        class="rounded d-flex justify-content-center align-items-center"
         id="sub-background"
+        class="rounded d-flex justify-content-center align-items-center"
       >
         <div>
           <div>
@@ -211,7 +211,7 @@
             </div>
           </div>
           <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-light px-4 py-2" id="buttn">
+            <button id="buttn" type="button" class="btn btn-light px-4 py-2">
               Descubrir como <i class="fas fa-long-arrow-alt-right"></i>
             </button>
           </div>
@@ -242,9 +242,6 @@ export default {
 }
 </script>
 <style scoped>
-* {
-  font-family: 'Open Sans', sans-serif;
-}
 .size1 {
   font-size: 48px;
   line-height: 58px;

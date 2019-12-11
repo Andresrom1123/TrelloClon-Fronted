@@ -15,7 +15,9 @@ export default {
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    script: [{src: "https://kit.fontawesome.com/effd4a3746.js", crossorigin: "anonymous"}]
+    script: [
+      {src: "https://kit.fontawesome.com/effd4a3746.js", crossorigin: "anonymous"}
+    ]
   },
   /*
    ** Customize the progress-bar color
@@ -31,7 +33,8 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '~/plugins/vee-validate.js'
+    '~/plugins/vee-validate.js',
+    {src: '~/plugins/localStorage.js', ssr: false}
   ],
   /*
    ** Nuxt.js dev-modules

@@ -1,14 +1,29 @@
 <template>
-  <div class="-banner -font">
-    <div class="d-flex justify-content-center pt-5 pb-2">
-      <img
-        src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/trello-header-logos/76ceb1faa939ede03abacb6efacdde16/trello-logo-blue.svg"
-        alt=""
-        class="-img"
-      />
+  <div class="-banner">
+    {{ logged }}
+    <div class="d-flex justify-content-center py-1">
+      <a href="/">
+        <img
+          src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/trello-header-logos/76ceb1faa939ede03abacb6efacdde16/trello-logo-blue.svg"
+          alt=""
+          class="-img"
+        />
+      </a>
     </div>
     <div class="d-flex justify-content-center">
       <div class="shadow p-5 -form">
+        <div>
+          <b-alert
+            @dismissed="error401 = false"
+            :show="error401"
+            dismissible
+            fade
+          >
+            <small class="text-danger">
+              Por favor ingresa los datos correctamente
+            </small>
+          </b-alert>
+        </div>
         <div class="d-flex justify-content-center mb-3 font-weight-bold">
           <template>Iniciar sesion con trello</template>
         </div>
@@ -16,16 +31,15 @@
           <form @submit.prevent="passes(onSubmit)">
             <ValidationProvider
               v-slot="{ errors }"
-              rules="required|email"
-              name="email"
+              rules="required"
+              name="username"
             >
               <div class="form-group">
                 <input
-                  id="exampleInputEmail1"
-                  type="email"
+                  v-model="form.username"
+                  type="text"
                   class="form-control"
-                  aria-describedby="emailHelp"
-                  placeholder="Introduzca el correo electronico"
+                  placeholder="Introduzca su nombre de usario"
                 />
                 <small class="from-text text-danger">
                   {{ errors[0] }}
@@ -39,7 +53,7 @@
             >
               <div class="form-group">
                 <input
-                  id="exampleInputPassword1"
+                  v-model="form.password"
                   type="password"
                   class="form-control"
                   placeholder="Introduzca la contraseña"
@@ -77,3 +91,54 @@
     </div>
   </div>
 </template>
+<script>
+import axios from 'axios'
+import { mapMutations, mapGetters } from 'vuex'
+export default {
+  data() {
+    return {
+      form: {
+        username: '',
+        password: ''
+      },
+      urlApi: 'http://127.0.0.1:8000/api/token/',
+      error401: false
+    }
+  },
+  computed: {
+    ...mapGetters({
+      logged: 'auth/logged'
+    })
+  },
+  methods: {
+    ...mapMutations({
+      login: 'auth/login'
+    }),
+    onSubmit() {
+      axios
+        .post(this.urlApi, this.form)
+        .then((response) => {
+          // Dirigimos la respuesta de la api
+          const user = response.data
+          // Mandamos a llamar el método que mapea la mutación login
+          this.login(user)
+          // Redireccionamos al boards
+          this.$router.push('/boards')
+          //
+        })
+        .catch((error) => {
+          console.log(error)
+          // Si el usuario no existe en la base de datos
+          if (error.response.status === 401) {
+            this.error401 = true
+          } else if (error.response.status === 422) {
+            // Si esta enviando mal la informacion
+            alert('no estoy enviando bien la informacion')
+          } else {
+            alert('Tuvimos un error desconcido')
+          }
+        })
+    }
+  }
+}
+</script>
