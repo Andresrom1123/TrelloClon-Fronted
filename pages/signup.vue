@@ -1,11 +1,13 @@
 <template>
   <div class="-banner -font">
-    <div class="d-flex justify-content-center pt-5 pb-2">
-      <img
-        src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/trello-header-logos/76ceb1faa939ede03abacb6efacdde16/trello-logo-blue.svg"
-        alt=""
-        class="-img"
-      />
+    <div class="d-flex justify-content-center py-1">
+      <a href="/">
+        <img
+          src="https://d2k1ftgv7pobq7.cloudfront.net/meta/c/p/res/images/trello-header-logos/76ceb1faa939ede03abacb6efacdde16/trello-logo-blue.svg"
+          alt=""
+          class="-img"
+        />
+      </a>
     </div>
     <div class="d-flex justify-content-center">
       <div class="shadow p-5 -form">
@@ -14,6 +16,57 @@
         </div>
         <ValidationObserver ref="observer" v-slot="{ passes }">
           <form @submit.prevent="passes(onSubmit)">
+            <ValidationProvider
+              v-slot="{ errors }"
+              rules="required"
+              name="username"
+            >
+              <div class="form-group">
+                <input
+                  id="exampleInputEmail1"
+                  type="text"
+                  class="form-control"
+                  placeholder="Introduzca su nombre de usuario"
+                />
+                <small class="from-text text-danger">
+                  {{ errors[0] }}
+                </small>
+              </div>
+            </ValidationProvider>
+            <ValidationProvider
+              v-slot="{ errors }"
+              rules="required"
+              name="firs_name"
+            >
+              <div class="form-group">
+                <input
+                  id="exampleInputEmail1"
+                  type="text"
+                  class="form-control"
+                  placeholder="Introduzca su nombre"
+                />
+                <small class="from-text text-danger">
+                  {{ errors[0] }}
+                </small>
+              </div>
+            </ValidationProvider>
+            <ValidationProvider
+              v-slot="{ errors }"
+              rules="required"
+              name="last_name"
+            >
+              <div class="form-group">
+                <input
+                  id="exampleInputEmail1"
+                  type="text"
+                  class="form-control"
+                  placeholder="Introduzca sus apellidos"
+                />
+                <small class="from-text text-danger">
+                  {{ errors[0] }}
+                </small>
+              </div>
+            </ValidationProvider>
             <ValidationProvider
               v-slot="{ errors }"
               rules="required|email"
@@ -26,23 +79,6 @@
                   class="form-control"
                   aria-describedby="emailHelp"
                   placeholder="Introduzca el correo electronico"
-                />
-                <small class="from-text text-danger">
-                  {{ errors[0] }}
-                </small>
-              </div>
-            </ValidationProvider>
-            <ValidationProvider
-              v-slot="{ errors }"
-              rules="required"
-              name="text"
-            >
-              <div class="form-group">
-                <input
-                  id="exampleInputEmail1"
-                  type="text"
-                  class="form-control"
-                  placeholder="Introducir nombre completo"
                 />
                 <small class="from-text text-danger">
                   {{ errors[0] }}
