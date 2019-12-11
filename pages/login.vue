@@ -1,6 +1,5 @@
 <template>
   <div class="-banner">
-    {{ logged }}
     <div class="d-flex justify-content-center py-1">
       <a href="/">
         <img
@@ -127,7 +126,6 @@ export default {
           //
         })
         .catch((error) => {
-          console.log(error)
           // Si el usuario no existe en la base de datos
           if (error.response.status === 401) {
             this.error401 = true
