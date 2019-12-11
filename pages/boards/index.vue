@@ -20,7 +20,7 @@
           >
             <nuxt-link
               class="p-2 text-decoration-none"
-              to="#"
+              :to="'boards/' + tabled.name"
               style="height:80px;"
             >
               <h5 class="-font-size-2 -text-white">
