@@ -42,7 +42,7 @@
           right
           no-caret
         >
-          <b-dropdown-item>
+          <b-dropdown-item @click="$bvModal.show('bv-modal-example')">
             <i class="mr-2 fab fa-trello"></i>Crear tablero
           </b-dropdown-item>
         </b-nav-item-dropdown>

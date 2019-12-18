@@ -122,7 +122,7 @@ export default {
           // Mandamos a llamar el método que mapea la mutación login
           this.login(user)
           // Redireccionamos al boards
-          this.$router.push('/boards')
+          this.$router.push('/' + this.form.username + '/boards')
           //
         })
         .catch((error) => {
