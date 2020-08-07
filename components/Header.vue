@@ -76,6 +76,7 @@ export default {
   methods: {
     localStorageRemove() {
       localStorage.removeItem('vuex')
+      localStorage.removeItem('token')
       this.$router.push('/login')
     }
   }

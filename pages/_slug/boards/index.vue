@@ -64,13 +64,7 @@
                 </h5>
                 <div class="text-right">
                   <small @click="buttonFavorite(indexTabled)">
-                    <i
-                      :class="
-                        card.favorite == 0 ? '-text-white' : 'text-warning'
-                      "
-                      class="far fa-star"
-                    >
-                    </i>
+                    <i class="far fa-star -text-white"></i>
                   </small>
                 </div>
               </div>
@@ -109,27 +103,24 @@ export default {
   },
   data() {
     return {
-      urlApiTabled: `http://127.0.0.1:8000/api/v1/users/${localStorage.getItem(
-        'id'
-      )}/tableros/`,
-      urlApiTabledFavorite: `http://127.0.0.1:8000/api/v1/users/${localStorage.getItem(
-        'id'
-      )}/tablerosfavoritos/`,
+      urlApiTabled: 'http://127.0.0.1:8000/api/v1/tableros/',
       tabled: [],
       tabledFavorite: [],
-      booleanButtonFavorite: true
+      booleanButtonFavorite: true,
+      token: localStorage.getItem('token')
     }
   },
   created() {
     this.getTabled()
   },
-  mounted() {
-    this.getTabledFavorite()
-  },
   methods: {
     getTabled() {
       axios
-        .get(this.urlApiTabled)
+        .get(this.urlApiTabled, {
+          headers: {
+            Authorization: 'Bearer ' + this.token
+          }
+        })
         .then((response) => {
           this.tabled = response.data
         })
@@ -137,32 +128,38 @@ export default {
           alert('Tuvimos un error')
         })
     },
-    getTabledFavorite() {
-      axios
-        .get(this.urlApiTabledFavorite)
-        .then((response) => {
-          this.tabledFavorite = response.data
-        })
-        .catch(() => {
-          alert('Tuvimos un error')
-        })
-    },
     buttonFavorite(index) {
-      this.booleanButtonFavorite = false
-      const form = {
-        users: this.tabled[index].dueno.id
+      // const favoriteExist = this.tabledFavorite.find((favorite) => {
+      //   return favorite.id = index
+      // })
+      if (this.tabledFavorite[index]) {
+        this.tabledFavorite.splice(index, 1)
+      } else {
+        this.tabledFavorite.push(this.tabled[index])
       }
-      axios
-        .post(
-          `http://127.0.0.1:8000/api/v1/tableros/${this.tabled[index].id}/fav/`,
-          form
-        )
-        .then((response) => {
-          // alert('Se agrego a tu lista de favoritos')
-        })
-        .catch(() => {
-          alert('Tuvimos un error')
-        })
+      this.booleanButtonFavorite = false
+      // alert(index)
+      // const form = {
+      //   users: this.tabled[index].dueno.id
+      // }
+      // axios
+      //   .post(
+      //     `
+      //       http://127.0.0.1:8000/api/v1/tableros/${this.tabled[index].id}/fav/
+      //     `,
+      //     form,
+      //     {
+      //       headers: {
+      //         Authorization: 'Bearer ' + this.token
+      //       }
+      //     }
+      //   )
+      //   .then((response) => {
+      //     // alert('Se agrego a tu lista de favoritos')
+      //   })
+      //   .catch(() => {
+      //     alert('Tuvimos un error')
+      //   })
     },
     booleanButtonFavoriteFalse(index) {
       if (this.booleanButtonFavorite) {

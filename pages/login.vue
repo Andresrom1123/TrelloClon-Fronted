@@ -124,6 +124,7 @@ export default {
           // Redireccionamos al boards
           this.$router.push('/' + this.form.username + '/boards')
           //
+          localStorage.setItem('token', response.data.access)
         })
         .catch((error) => {
           // Si el usuario no existe en la base de datos
